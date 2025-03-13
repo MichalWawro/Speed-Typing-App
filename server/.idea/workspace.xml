@@ -1,30 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="54136cf5-3390-4e18-a92e-25ea36e5a1c5" name="Changes" comment="Frontend and Backend setup" />
+    <list default="true" id="01bf4c4a-9c76-4a41-a0cd-36afc95106bb" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="Use Maven wrapper" />
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
-  <component name="ProjectId" id="2uHP4ZhXFI2YtQWaJZ9GBoNhHLA" />
+  <component name="ProjectId" id="2uHYK38aQAgSKdJnwhu7nACfi0y" />
   <component name="ProjectViewState">
     <option name="compactDirectories" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -36,20 +22,9 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Michał Wawro/Desktop/Projects/Typing Test Game/typing-test-game/server",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "spring.configuration.checksum": "ae0db14d86d8874d835991bb82f281fc",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -65,43 +40,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="54136cf5-3390-4e18-a92e-25ea36e5a1c5" name="Changes" comment="" />
-      <created>1741902335863</created>
+      <changelist id="01bf4c4a-9c76-4a41-a0cd-36afc95106bb" name="Changes" comment="" />
+      <created>1741906900571</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1741902335863</updated>
-      <workItem from="1741902336866" duration="159000" />
-      <workItem from="1741902565128" duration="348000" />
-      <workItem from="1741903338485" duration="26000" />
-      <workItem from="1741903408257" duration="1779000" />
+      <updated>1741906900571</updated>
     </task>
-    <task id="LOCAL-00001" summary="Frontend and Backend setup">
-      <option name="closed" value="true" />
-      <created>1741903842776</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1741903842776</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Frontend and Backend setup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Frontend and Backend setup" />
   </component>
 </project>
