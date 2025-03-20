@@ -1,76 +1,31 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
 import GlobalKeyListener from './components/GlobalKeyListener';
 import TextDisplay from './components/TextDisplay';
+import Options from './components/Options'
+import Counter from './components/Counter';
+import SummaryScreen from './components/SummaryScreen';
+import Footer from './components/Footer'
 
 function App() {
   const [input, setInput] = useState('');
   const [text, setText] = useState('bread monkey table tree family');
   const [textTable, setTextTable] = useState(['bread', 'monkey', 'table', 'tree', 'family']);
+  const [display, setDisplay] = useState('');
 
-  const [time, setTime] = useState(10);
+  const [stage, setStage] = useState(1);
   const [justReset, setJustReset] = useState(true);
   const [keyListener, setKeyListener] = useState(true);
-  const keyListenerRef = useRef(keyListener);
+  //Delete both justReset and keyListener
+
+  const [mode, setMode] = useState('time')
+  const [time, setTime] = useState(30);
+  const [wordCount, setWordCount] = useState(30);
 
   useEffect(() => {
     fetchText();
   }, [])
-
-  //KeyListener Ref
-  useEffect(() => {
-    keyListenerRef.current = keyListener;
-  }, [keyListener])
-
-  //Timer
-  useEffect(() => {
-    if (!justReset) {
-      const interval = setInterval(() => {
-        setTime((prevTime) => {
-          if (prevTime < 1) {
-            setKeyListener(false);
-            clearInterval(interval);
-            return 0;
-          }
-          return prevTime - 1;
-        });
-      }, 1000);
-
-      return () => clearInterval(interval);
-    }
-  }, [justReset, time]);
-
-  //HandleKeyPress
-  const handleKeyPress = (key) => {
-    //Reset Button
-    if (key === 'Escape') {
-      reset();
-    };
-
-    //Return if keyListener is off
-    if (!keyListenerRef.current) return;
-
-    //Timer start
-    if (input === '' && key.length === 1 && key !== ' ') {
-      setJustReset(false);
-    };
-
-    //Input changers
-    if (key.length === 1) {
-      setInput((prevInput) => prevInput + key);
-    } else if (key === 'Backspace') {
-      setInput((prevInput) => prevInput.slice(0, -1));
-    };
-  };
-
-  //Game reset
-  const reset = () => {
-    setInput('');
-    setTime(10)
-    setKeyListener(true);
-    setJustReset(true);
-  };
 
   //Fetch text from server
   const fetchText = () => {
@@ -80,10 +35,38 @@ function App() {
       .catch(error => console.error("Error fetching text: ", error));
   };
 
+  //HandleInput 
+  const handleInput = (key) => {
+    if (input === '' && key !== ' ') { //Timer start
+      setJustReset(false);
+      //setStage(2);
+    };
+
+    if (key === 'Backspace') { //Input changers
+      setInput((prevInput) => prevInput.slice(0, -1));
+    } else {
+      setInput((prevInput) => prevInput + key);
+    };
+  };
+
+  //Game reset
+  const reset = () => {
+    setInput('');
+    setTime(30)
+    setKeyListener(true);
+    setJustReset(true);
+    //setStage(1)
+  };
+
   return (
     <div className="App">
-      <GlobalKeyListener onKeyPress={handleKeyPress} />
-      <TextDisplay text={text} input={input} time={time} />
+      <GlobalKeyListener onInput={handleInput} reset={reset} stage={stage} keyListener={keyListener} />
+
+      <Options mode={mode} setMode={setMode} setTime={setTime} setWordCount={setWordCount} reset={reset} />
+      <Counter stage={stage} setStage={setStage} time={time} setTime={setTime} justReset={justReset} setKeyListener={setKeyListener} />
+      <TextDisplay input={input} text={text} display={display} setDisplay={setDisplay} />
+      <SummaryScreen />
+      <Footer />
     </div>
   );
 }

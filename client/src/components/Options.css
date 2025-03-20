@@ -1,0 +1,62 @@
+.options-container {
+    text-align: center;
+    display: flex;
+    position: absolute;
+    top: 10vh;
+    width: 100vw;
+    align-self: center;
+    justify-content: center;
+    flex-direction: row;
+
+}
+
+.mode-button {
+    text-align: center;
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-size: 15px;
+    font-style: normal;
+
+    padding-inline: 10px;
+    margin-inline: 4px;
+    background-color: rgb(90, 142, 221);
+
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: #545aad;
+}
+
+.option-button {
+    text-align: center;
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-size: 15px;
+    font-style: normal;
+
+    padding-inline: 10px;
+    margin-inline: 4px;
+    background-color: rgb(90, 142, 221);
+
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: #545aad;
+}
+
+.reset-button {
+    text-align: center;
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-size: 15px;
+    font-style: normal;
+
+    padding-inline: 10px;
+    margin-inline: 4px;
+    background-color: rgb(90, 142, 221);
+
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: #545aad;
+}
