@@ -13,6 +13,7 @@ function Options({ mode, setMode, setTime, setWordCount, reset }) {
                 <>
                     {mode === 'time' ? (
                         <>
+                            {/* <button className={`option-button ${time === 15 ? "active" : ""}`} onClick={() => setTime(15)}>15</button> */}
                             <button className='option-button' onClick={() => setTime(15)}>15</button>
                             <button className='option-button' onClick={() => setTime(30)}>30</button>
                             <button className='option-button' onClick={() => setTime(60)}>60</button>

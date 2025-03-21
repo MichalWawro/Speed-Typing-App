@@ -1,83 +1,42 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
-
-.text-display {
-    text-align: center;
-    font-family: "Roboto Mono", monospace;
-    font-optical-sizing: auto;
-    font-weight: 300;
-    font-size: 28px;
-    font-style: normal;
-    max-height: 30vh;
-    width: 100vw;
-}
-
-.time-display {
-    padding-top:15px
-}
-
-.input-container {
-    position: absolute;
-    top: 25vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100vw;
-
-}
-
-.input-label {
-    margin-bottom: 4px;
-    font-weight: 400;
-}
-
-.input-display {
-    align-self: center;
-    word-wrap: break-word;
-    text-align: left;
-    justify-self: center;
-    padding: 10px;
-    min-height: 40px;
-    width: 85vw;
-}
-
-/* Testing Area */
-
 .display-container {
-    position: absolute;
-    top:25vh;
-    /* width: 100vw; */
+  display: flex;
+  /* position: absolute; */
+  /* top: 19vh; */
+  width: 100vw;
+  padding-top: 45px;
 
-    padding: 16px;
-    border: 2px solid #ccc;
-    border-radius: 12px;
-    background-color: #f9f9f9;
-    min-height: 100px;
-    word-wrap: break-word;
-    font-family: 'Courier New', Courier, monospace;
-    line-height: 1.6;
-    overflow: hidden;
-  }
-  
-  /* Correct letters (green) */
-  .display-container span.correct {
-    color: green;
-    /* font-weight: bold; */
-  }
-  
-  /* Incorrect letters (red) */
-  .display-container span.incorrect {
-    color: red;
-  }
-  
-  /* Skipped letters (underlined) */
-  .display-container span.skipped {
-    color: gray;
-    text-decoration: underline;
-  }
-  
-  /* Extra letters (red after word) */
-  .display-container span.extra {
-    color: red;
-    /* opacity: 0.8; */
-  }
-  
+  background-color: #333333;
+}
+
+.display-text {
+  margin: auto;
+  width: 85%;
+
+  font-family: "Roboto Mono", monospace;
+  font-weight: 350;
+  font-size: 34px;
+  line-height: 1.4;
+
+  background-color: #333333;
+}
+
+/* Correct letters */
+.display-container span.correct {
+  color: white;
+}
+
+/* Incorrect letters */
+.display-container span.incorrect {
+  color: rgb(155, 0, 0);
+}
+
+/* Skipped letters */
+.display-container span.skipped {
+  color: gray;
+  /* text-decoration: underline; */
+}
+
+/* Extra letters */
+.display-container span.extra {
+  color: rgb(110, 0, 0);
+}

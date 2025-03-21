@@ -1,62 +1,82 @@
 .options-container {
-    text-align: center;
     display: flex;
-    position: absolute;
-    top: 10vh;
+    /* position: absolute; */
+    /* top: 0vh; */
+    padding-top: 20px;
     width: 100vw;
-    align-self: center;
     justify-content: center;
-    flex-direction: row;
 
+    background-color: #333333;
 }
 
-.mode-button {
-    text-align: center;
-    font-family: "Roboto Mono", monospace;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-size: 15px;
-    font-style: normal;
-
-    padding-inline: 10px;
-    margin-inline: 4px;
-    background-color: rgb(90, 142, 221);
-
+/* Boxes */
+.options-box {
+    padding: 5px 5px;
+    margin-inline: 10px;
     border-radius: 10px;
-    border-width: 2px;
-    border-color: #545aad;
+
+    background-color: #212121;
+}
+
+.reset-box {
+    padding: 5px 5px;
+    margin-inline: 10px;
+    border-radius: 10px;
+
+    background-color: #212121;
+}
+
+/* Buttons */
+.mode-button {
+    padding: 5px;
+    padding-inline: 10px;
+    margin-inline: 2px;
+    font-family: "Roboto Mono", monospace;
+    font-size: 15px;
+
+    background: none;
+    border: none;
+    border-radius: 10px;
+    color: #7c7c7c;
 }
 
 .option-button {
-    text-align: center;
-    font-family: "Roboto Mono", monospace;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-size: 15px;
-    font-style: normal;
-
+    padding: 5px;
     padding-inline: 10px;
-    margin-inline: 4px;
-    background-color: rgb(90, 142, 221);
+    margin-inline: 2px;
+    font-family: "Roboto Mono", monospace;
+    font-size: 15px;
 
+    background: none;
+    border: none;
     border-radius: 10px;
-    border-width: 2px;
-    border-color: #545aad;
+    color: #7c7c7c;
 }
 
 .reset-button {
-    text-align: center;
-    font-family: "Roboto Mono", monospace;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-size: 15px;
-    font-style: normal;
-
+    padding: 5px;
     padding-inline: 10px;
-    margin-inline: 4px;
-    background-color: rgb(90, 142, 221);
+    margin-inline: 2px;
+    font-family: "Roboto Mono", monospace;
+    font-size: 15px;
 
+    background: none;
+    border: none;
     border-radius: 10px;
-    border-width: 2px;
-    border-color: #545aad;
+    color: #7c7c7c;
 }
+
+/* On Hover */
+.mode-button:hover, .option-button:hover, .reset-button:hover {
+    background-color: #333333;
+}
+
+
+.mode-button:active, .option-button:active, .reset-button:active {
+    background-color: #333333;
+}
+
+/* To do here: */
+/* Perfectly center options box, reset box on the left */
+/* Buttons:active */
+/* Move/Hide on stage 2 and 3 */

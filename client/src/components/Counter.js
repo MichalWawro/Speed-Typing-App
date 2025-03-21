@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import './Counter.css';
 
-function Counter({ stage, setStage, time, setTime, justReset, setKeyListener }) {
+function Counter({ stage, setStage, time, setTime, wordCount, setWordCount, justReset, setKeyListener }) {
 
     useEffect(() => {
         if (!justReset) {
@@ -23,7 +23,10 @@ function Counter({ stage, setStage, time, setTime, justReset, setKeyListener }) 
     }, [justReset, time]);
 
     return (
-        <div className='time-display'>time: {time}</div>
+        <div className='counters-container'>
+            <div className='time-display'>{time}</div>
+            <div className='word-counter'>{wordCount}</div>
+        </div>
     )
 }
 

@@ -1,21 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
 .App {
-  text-align: center;
-  font-family: "Roboto Mono", monospace;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-size: 30px;
-  font-style: normal;
-  line-height: 1.2;
-  background-color: lightblue;
+  overflow: hidden;
+  background-color: #333333;
   height: 100vh;
-  max-height: 100vh;
-  max-width: 100vw;
-}
-
-.test-div {
-  position: absolute;
-  bottom: 20vh;
-  width: 100vw;
 }

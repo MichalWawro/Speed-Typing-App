@@ -21,7 +21,7 @@ function App() {
 
   const [mode, setMode] = useState('time')
   const [time, setTime] = useState(30);
-  const [wordCount, setWordCount] = useState(30);
+  const [wordCount, setWordCount] = useState(120);
 
   useEffect(() => {
     fetchText();
@@ -63,7 +63,7 @@ function App() {
       <GlobalKeyListener onInput={handleInput} reset={reset} stage={stage} keyListener={keyListener} />
 
       <Options mode={mode} setMode={setMode} setTime={setTime} setWordCount={setWordCount} reset={reset} />
-      <Counter stage={stage} setStage={setStage} time={time} setTime={setTime} justReset={justReset} setKeyListener={setKeyListener} />
+      <Counter stage={stage} setStage={setStage} time={time} setTime={setTime} wordCount={wordCount} setWordCount={setWordCount} justReset={justReset} setKeyListener={setKeyListener} />
       <TextDisplay input={input} text={text} display={display} setDisplay={setDisplay} />
       <SummaryScreen />
       <Footer />
