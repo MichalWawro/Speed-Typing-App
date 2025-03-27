@@ -1,0 +1,53 @@
+.footer-container {}
+
+.footer-info {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    /* background-color: #212121; */
+
+    /* text-align: center; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footer-info a {
+    font-family: "Roboto Mono", monospace;
+    color: #7c7c7c;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.footer-info a:hover {
+    color: white;
+}
+
+.escape-icon-container {
+    position: absolute;
+    bottom: 0vh;
+    left: 50vw;
+
+    transition: all 1s;
+}
+
+.escape-icon-container-hidden {
+    bottom: -15vh;
+    opacity: 0%;
+}
+
+.escape-icon {
+    transform: translate(-50%, -25%);
+    width: 45%;
+}
+
+.escape-text {
+    font-family: "Roboto Mono", monospace;
+    font-size: 16px;
+    transform: translate(-50%, -200%);
+
+    color: #7c7c7c;
+}

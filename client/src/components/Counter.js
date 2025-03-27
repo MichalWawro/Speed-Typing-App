@@ -1,16 +1,14 @@
 import React, { useEffect } from "react";
 import './Counter.css';
 
-function Counter({ stage, setStage, time, setTime, wordCount, setWordCount, justReset, setKeyListener }) {
+function Counter({ stage, setStage, time, setTime, wordCount, setWordCount}) {
 
     useEffect(() => {
-        if (!justReset) {
-            //if(stage === 2)
+        if (stage === 2) {
             const interval = setInterval(() => {
                 setTime((prevTime) => {
                     if (prevTime < 1) {
-                        setKeyListener(false);
-                        //setStage(2)
+                        setStage(3);
                         clearInterval(interval);
                         return 0;
                     }
@@ -20,10 +18,10 @@ function Counter({ stage, setStage, time, setTime, wordCount, setWordCount, just
 
             return () => clearInterval(interval);
         }
-    }, [justReset, time]);
+    }, [stage, time]);
 
     return (
-        <div className='counters-container'>
+        <div className={`counters-container ${stage !== 2 ? 'counters-container-hidden' : ''}`}>
             <div className='time-display'>{time}</div>
             <div className='word-counter'>{wordCount}</div>
         </div>

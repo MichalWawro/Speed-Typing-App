@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-function GlobalKeyListener({ onInput, reset, stage, keyListener }) {
+function GlobalKeyListener({ onInput, reset, stage, testSetTime}) {
   const handleKeyPress = (event) => {
     const { key } = event;
     
@@ -8,8 +8,11 @@ function GlobalKeyListener({ onInput, reset, stage, keyListener }) {
       reset();
     };
 
-    if (!keyListener) return;
-    //stage 1 3
+    if(key === 'F2') {
+      testSetTime(1);
+    }
+
+    if (stage === 3) return;
 
     if (key.length === 1 || key === 'Backspace') {
       onInput(key);
@@ -19,7 +22,7 @@ function GlobalKeyListener({ onInput, reset, stage, keyListener }) {
   useEffect(() => {
     window.addEventListener("keydown", handleKeyPress);
     return () => window.removeEventListener("keydown", handleKeyPress);;
-  }, [keyListener]);
+  }, [stage]);
 
   return null;
 };

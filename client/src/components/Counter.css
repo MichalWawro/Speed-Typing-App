@@ -1,12 +1,18 @@
 .counters-container {
     display: flex;
-    /* position: absolute; */
-    /* top: 7vh; */
+    position: relative;
+    top: -4vh;
     width: 100vw;
     padding-top: 50px;
     justify-content: center;
 
-    background-color: #333333;
+    opacity: 100%;
+    transition: all 1s;
+}
+
+.counters-container-hidden {
+    opacity: 0%;
+    top: -20vh;
 }
 
 .time-display,

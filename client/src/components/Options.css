@@ -1,58 +1,33 @@
+/* Main container */
 .options-container {
     display: flex;
-    /* position: absolute; */
-    /* top: 0vh; */
+    position: relative;
+    top: 0vh;
     padding-top: 20px;
     width: 100vw;
     justify-content: center;
 
     background-color: #333333;
+
+    transition: 1s;
+}
+
+.options-container-hidden {
+    top: -7vh;
 }
 
 /* Boxes */
-.options-box {
+.options-box, .reset-box {
     padding: 5px 5px;
-    margin-inline: 10px;
-    border-radius: 10px;
-
-    background-color: #212121;
-}
-
-.reset-box {
-    padding: 5px 5px;
-    margin-inline: 10px;
+    margin-inline: 5px;
     border-radius: 10px;
 
     background-color: #212121;
 }
 
 /* Buttons */
-.mode-button {
-    padding: 5px;
-    padding-inline: 10px;
-    margin-inline: 2px;
-    font-family: "Roboto Mono", monospace;
-    font-size: 15px;
-
-    background: none;
-    border: none;
-    border-radius: 10px;
-    color: #7c7c7c;
-}
-
-.option-button {
-    padding: 5px;
-    padding-inline: 10px;
-    margin-inline: 2px;
-    font-family: "Roboto Mono", monospace;
-    font-size: 15px;
-
-    background: none;
-    border: none;
-    border-radius: 10px;
-    color: #7c7c7c;
-}
-
+.mode-button,
+.option-button,
 .reset-button {
     padding: 5px;
     padding-inline: 10px;
@@ -64,19 +39,19 @@
     border: none;
     border-radius: 10px;
     color: #7c7c7c;
+
+    transition: 0.3s;
 }
 
 /* On Hover */
-.mode-button:hover, .option-button:hover, .reset-button:hover {
+.mode-button:hover,
+.option-button:hover,
+.reset-button:hover {
+    color: white;
     background-color: #333333;
 }
 
-
-.mode-button:active, .option-button:active, .reset-button:active {
+.active {
+    color: white;
     background-color: #333333;
 }
-
-/* To do here: */
-/* Perfectly center options box, reset box on the left */
-/* Buttons:active */
-/* Move/Hide on stage 2 and 3 */

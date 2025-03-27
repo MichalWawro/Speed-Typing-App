@@ -1,30 +1,38 @@
 import React, { useState } from 'react'
 import './Options.css'
 
-function Options({ mode, setMode, setTime, setWordCount, reset }) {
-    const [value, setValue] = useState(30);
+function Options({ stage, mode, setMode, setTime, setWordCount, reset }) {
+    const [activeButton, setActiveButton] = useState(0);
 
+    function handleOnClick (value, buttonIndex) {
+        if(mode === 'time') {
+            setTime(value)
+        } else {
+            setWordCount(value)
+        }
+        setActiveButton(buttonIndex);
+    }
 
     return (
-        <div className='options-container'>
+        <div className={`options-container ${stage !== 1 ? 'options-container-hidden' : '' }`}>
             <div className='options-box'>
-                <button className='mode-button' onClick={() => setMode('time')}>Time</button>
-                <button className='mode-button' onClick={() => setMode('wordCount')}>Word Count</button>
+                <button className={`mode-button ${mode === "time" ? 'active': ''}`} onClick={() => setMode('time')}>Time</button>
+                <button className={`mode-button ${mode === "wordCount" ? 'active': ''}`} onClick={() => setMode('wordCount')}>Word Count</button>
                 <>
                     {mode === 'time' ? (
                         <>
-                            {/* <button className={`option-button ${time === 15 ? "active" : ""}`} onClick={() => setTime(15)}>15</button> */}
-                            <button className='option-button' onClick={() => setTime(15)}>15</button>
-                            <button className='option-button' onClick={() => setTime(30)}>30</button>
-                            <button className='option-button' onClick={() => setTime(60)}>60</button>
-                            <button className='option-button' onClick={() => setTime(90)}>90</button>
+                            <button className={`option-button ${activeButton === 0 && mode === 'time' ? "active" : ""}`} onClick={() => handleOnClick(15, 0)}>15</button>
+                            <button className={`option-button ${activeButton === 1 && mode === 'time' ? "active" : ""}`} onClick={() => handleOnClick(30, 1)}>30</button>
+                            <button className={`option-button ${activeButton === 2 && mode === 'time' ? "active" : ""}`} onClick={() => handleOnClick(60, 2)}>60</button>
+                            <button className={`option-button ${activeButton === 3 && mode === 'time' ? "active" : ""}`} onClick={() => handleOnClick(90, 3)}>90</button>
                         </>
                     ) : (
                         <>
-                            <button className='option-button' onClick={() => setWordCount(20)}>20</button>
-                            <button className='option-button' onClick={() => setWordCount(40)}>40</button>
-                            <button className='option-button' onClick={() => setWordCount(60)}>60</button>
-                            <button className='option-button' onClick={() => setWordCount(80)}>80</button>
+                            <button className={`option-button ${activeButton === 0 && mode === 'wordCount' ? "active" : ""}`} onClick={() => handleOnClick(20, 0)}>20</button>
+                            <button className={`option-button ${activeButton === 1 && mode === 'wordCount' ? "active" : ""}`} onClick={() => handleOnClick(40, 1)}>40</button>
+                            <button className={`option-button ${activeButton === 2 && mode === 'wordCount' ? "active" : ""}`} onClick={() => handleOnClick(60, 2)}>60</button>
+                            <button className={`option-button ${activeButton === 3 && mode === 'wordCount' ? "active" : ""}`} onClick={() => handleOnClick(80, 3)}>80</button>
+
                         </>
                     )}
                 </>
