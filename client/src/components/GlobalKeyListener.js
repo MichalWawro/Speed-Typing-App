@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 
-function GlobalKeyListener({ onInput, reset, stage, testSetTime}) {
+function GlobalKeyListener({ onInput, reset, stage, testSetTime }) {
   const handleKeyPress = (event) => {
     const { key } = event;
-    
+
     if (key === 'Escape') { //Reset Button
       reset();
     };
 
-    if(key === 'F2') {
+    if (key === 'F2') {
       testSetTime(1);
     }
 
@@ -21,7 +21,15 @@ function GlobalKeyListener({ onInput, reset, stage, testSetTime}) {
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyPress);
-    return () => window.removeEventListener("keydown", handleKeyPress);;
+
+    if (stage === 1) {
+      window.removeEventListener("keydown", handleKeyPress);
+      setTimeout(() => {
+        window.addEventListener("keydown", handleKeyPress);
+      }, 750);
+    }
+
+    return () => window.removeEventListener("keydown", handleKeyPress);
   }, [stage]);
 
   return null;

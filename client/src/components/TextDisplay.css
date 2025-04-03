@@ -4,12 +4,12 @@
   top: 0vh;
   width: 100vw;
   padding-top: 45px;
-
-  background-color: #333333;
-  transition: all 1.25s;
+  background-color: none;
 }
 
 .display-text {
+  position: relative;
+  top: 0px;
   margin: auto;
   width: 85%;
 
@@ -18,8 +18,11 @@
   font-size: 34px;
   line-height: 1.4;
 
-  background-color: #333333;
-  transition: all 1.25s;
+  /* future me note: font-size * numer of lines * line-height */
+  max-height: calc(34px * 4 * 1.4);
+  overflow: hidden;
+  background-color: none;
+  color: gray;
 }
 
 .display-container-summary {
@@ -30,6 +33,7 @@
   font-size: 30px;
   line-height: 1.1;
   width: 75%;
+  max-height: calc(30px * 4 * 1.1);
 }
 
 /* Correct letters */
@@ -45,10 +49,23 @@
 /* Skipped letters */
 .display-container span.skipped {
   color: gray;
-  /* text-decoration: underline; */
 }
 
 /* Extra letters */
 .display-container span.extra {
   color: rgb(110, 0, 0);
+}
+
+.cursor {
+  position: absolute;
+  width: 3px;
+  height: 1em;
+  background-color: green;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
 }

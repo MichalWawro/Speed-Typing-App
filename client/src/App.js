@@ -12,7 +12,6 @@ function App() {
   const [input, setInput] = useState('');
   const [text, setText] = useState('bread monkey table tree family');
   const [textTable, setTextTable] = useState(['bread', 'monkey', 'table', 'tree', 'family']);
-  const [display, setDisplay] = useState('');
 
   const [stage, setStage] = useState(1);
 
@@ -34,32 +33,37 @@ function App() {
 
   //HandleInput 
   const handleInput = (key) => {
-    if (input === '' && key !== ' ') { //Timer start
-      setStage(2);
-    };
+    setInput((prevInput) => {
+      if (prevInput === '' && key !== ' ') { // Timer start
+        setStage(2);
+      }
 
-    if (key === 'Backspace') { //Input changers
-      setInput((prevInput) => prevInput.slice(0, -1));
-    } else {
-      setInput((prevInput) => prevInput + key);
-    };
+      if (key === 'Backspace') { // Handle backspace
+        return prevInput.slice(0, -1);
+      } else if (key === ' ' && prevInput.endsWith(' ')) { // Prevent double spaces
+        return prevInput;
+      } else {
+        return prevInput + key;
+      }
+    });
   };
+
 
   //Game reset
   const reset = () => {
     setInput('');
-    setTime(30)
-    setStage(1)
+    setTime(30);
+    setStage(1);
   };
 
   return (
     <div className="App">
-      <GlobalKeyListener onInput={handleInput} stage={stage} reset={reset} testSetTime={setTime}/>
+      <GlobalKeyListener onInput={handleInput} stage={stage} reset={reset} testSetTime={setTime} />
 
       <Options stage={stage} mode={mode} setMode={setMode} setTime={setTime} setWordCount={setWordCount} reset={reset} />
-      <Counter stage={stage} setStage={setStage} time={time} setTime={setTime} wordCount={wordCount} setWordCount={setWordCount}/>
-      <TextDisplay stage={stage} input={input} text={text} display={display} setDisplay={setDisplay} />
-      <SummaryScreen stage={stage} input={input} text={text} mode={mode}/>
+      <Counter stage={stage} setStage={setStage} time={time} setTime={setTime} wordCount={wordCount} setWordCount={setWordCount} />
+      <TextDisplay stage={stage} input={input} text={text} />
+      <SummaryScreen stage={stage} input={input} text={text} mode={mode} />
       <Footer stage={stage} />
     </div>
   );
