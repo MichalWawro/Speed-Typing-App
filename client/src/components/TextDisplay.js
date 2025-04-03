@@ -16,13 +16,12 @@ function TextDisplay({ stage, input, text }) {
     detectCursorMovement();
   }, [display]);
 
+  //Reseting the variables
   useEffect(() => {
-    if (stage !== 2) {
-      setTopPosition(0);
-      setLineOffset(0);
-      setLastCursorY(null);
-      setSkipFirst(true);
-    }
+    setTopPosition(0);
+    setLineOffset(0);
+    setSkipFirst(true);
+    setLastCursorY(null);
   }, [stage])
 
   const compareStrings = (input, text) => {
@@ -69,13 +68,13 @@ function TextDisplay({ stage, input, text }) {
 
     const cursorRect = cursor.getBoundingClientRect();
 
-    if (skipFirst == false && lastCursorY !== null && cursorRect.top > lastCursorY) {
+    if (skipFirst === false && lastCursorY !== null && cursorRect.top > lastCursorY) {
       console.log('cursor moved');
       setTopPosition(prev => prev - 47.6);
       setLineOffset(prev => prev + 1);
     }
 
-    if (skipFirst == true && lastCursorY !== null && cursorRect.top > lastCursorY) {
+    if (skipFirst === true && lastCursorY !== null && cursorRect.top > lastCursorY) {
       setSkipFirst(false);
     }
 

@@ -40,7 +40,7 @@ function App() {
 
       if (key === 'Backspace') { // Handle backspace
         return prevInput.slice(0, -1);
-      } else if (key === ' ' && prevInput.endsWith(' ')) { // Prevent double spaces
+      } else if (key === ' ' && (prevInput.endsWith(' ') || prevInput === '')) { // Prevent double spaces
         return prevInput;
       } else {
         return prevInput + key;
