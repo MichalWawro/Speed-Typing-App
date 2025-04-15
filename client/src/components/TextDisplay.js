@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import './TextDisplay.css';
 
-function TextDisplay({ stage, input, text }) {
+function TextDisplay({ stage, input, words }) { //-text
   const [display, setDisplay] = useState('');
+
   const [topPosition, setTopPosition] = useState(0);
   const [lineOffset, setLineOffset] = useState(0);
   const [lastCursorY, setLastCursorY] = useState(null);
   const [skipFirst, setSkipFirst] = useState(true);
 
   useEffect(() => {
-    setDisplay(compareStrings(input, text));
-  }, [input, text]);
+    setDisplay(compareStrings(input, words)); //-text
+  }, [input, words]); //-text
 
   useEffect(() => {
     detectCursorMovement();
@@ -24,16 +25,17 @@ function TextDisplay({ stage, input, text }) {
     setLastCursorY(null);
   }, [stage])
 
-  const compareStrings = (input, text) => {
+  const compareStrings = (input, words) => { //-text
     const inputWords = input.split(' ');
-    const textWords = text.split(' ');
+    //const textWordss = text.split(' ');
+    const textWords = words;
 
     return textWords
-      .map((word, index) => compareWords(inputWords[index] || '', word, index === inputWords.length - 1))
+      .map((word, index) => compareWords(inputWords[index] || '', word, index === inputWords.length - 1, index >= inputWords.length - 1))
       .join(' ');
   };
 
-  const compareWords = (inputWord, targetWord, isCurrentWord) => {
+  const compareWords = (inputWord, targetWord, isCurrentWord, isNext) => {
     let result = '';
 
     for (let i = 0; i < Math.max(inputWord.length, targetWord.length); i++) {
@@ -46,8 +48,10 @@ function TextDisplay({ stage, input, text }) {
 
       if (inputChar === targetChar) { // Correct
         result += `<span class="correct">${targetChar}</span>`;
-      } else if (!inputChar && targetChar) { // Skipped
+      } else if (!inputChar && targetChar && !isNext) { // Skipped
         result += `<span class="skipped">${targetChar}</span>`;
+      } else if (!inputChar && targetChar) { // Next
+        result += `<span class="next">${targetChar}</span>`;
       } else if (inputChar && !targetChar) { // Extra letters
         result += `<span class="extra">${inputChar}</span>`;
       } else { // Incorrect
@@ -68,17 +72,27 @@ function TextDisplay({ stage, input, text }) {
 
     const cursorRect = cursor.getBoundingClientRect();
 
-    if (skipFirst === false && lastCursorY !== null && cursorRect.top > lastCursorY) {
-      console.log('cursor moved');
-      setTopPosition(prev => prev - 47.6);
-      setLineOffset(prev => prev + 1);
-    }
+    console.log(cursorRect.top, lastCursorY, "||", lineOffset, skipFirst);
 
-    if (skipFirst === true && lastCursorY !== null && cursorRect.top > lastCursorY) {
-      setSkipFirst(false);
+    if (lastCursorY !== null && cursorRect.top > lastCursorY) {
+      if (!skipFirst) {
+        setTopPosition(prev => prev - 47.6);
+        setLineOffset(prev => prev + 1);
+      } else {
+        setSkipFirst(false);
+        setLastCursorY(cursorRect.top);
+      }
+    } else if (lastCursorY !== null && cursorRect.top < lastCursorY) {
+      if (lineOffset > 0) {
+        setTopPosition(prev => prev + 47.6);
+        setLineOffset(prev => prev - 1);
+      } else {
+        setSkipFirst(true);
+        setLastCursorY(cursorRect.top);
+      }
+    } else {
+      setLastCursorY(cursorRect.top);
     }
-
-    setLastCursorY(cursorRect.top);
   };
 
   const calculateMaxHeight = () => {

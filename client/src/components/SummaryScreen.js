@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from "react";
 import './SummaryScreen.css';
 
-function SummaryScreen({ stage, input, text, target, mode }) {
-    const[WPM, setWPM] = useState(0);
-    useEffect (() => {
-        calculateStats()
+function SummaryScreen({ stage, input, text, words, target, mode }) {
+    const [WPM, setWPM] = useState(0);
+    useEffect(() => {
+        if (stage === 3) {
+            calculateStats()
+        }
     }, [stage])
 
-    function calculateStats () {
+    function calculateStats() {
         // countCorrectWords
-        
+
         setWPM(0)
     }
 
     return (
         <div className={`summary-container ${stage !== 3 ? 'summary-container-hidden' : ''}`}>
             <div className="summary-stats">
-            {WPM}
+                {WPM}
             </div>
         </div>
     )
@@ -24,7 +26,7 @@ function SummaryScreen({ stage, input, text, target, mode }) {
 
 export default SummaryScreen;
 
-// Stats to display: 
+// Stats to display:
 // test type, mode
 // wpm = word/min
 // characters correct/incorrect/missed/extra

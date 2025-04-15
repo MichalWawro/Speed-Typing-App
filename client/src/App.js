@@ -11,7 +11,7 @@ import Footer from './components/Footer';
 function App() {
   const [input, setInput] = useState('');
   const [text, setText] = useState('bread monkey table tree family');
-  const [textTable, setTextTable] = useState(['bread', 'monkey', 'table', 'tree', 'family']);
+  const [words, setWords] = useState(['bread', 'monkey', 'table', 'tree', 'family']);
 
   const [stage, setStage] = useState(1);
 
@@ -21,6 +21,7 @@ function App() {
 
   useEffect(() => {
     fetchText();
+    fetchArray(); //In testing
   }, [])
 
   //Fetch text from server
@@ -30,6 +31,13 @@ function App() {
       .then(data => setText(data))
       .catch(error => console.error("Error fetching text: ", error));
   };
+
+  const fetchArray = () => {
+    fetch('http://localhost:8080/api/get-random-array')
+      .then(response => response.json())
+      .then(data => setWords(data))
+      .catch(error => console.error("Error fetching text: ", error));
+  }
 
   //HandleInput 
   const handleInput = (key) => {
@@ -48,7 +56,6 @@ function App() {
     });
   };
 
-
   //Game reset
   const reset = () => {
     setInput('');
@@ -62,8 +69,8 @@ function App() {
 
       <Options stage={stage} mode={mode} setMode={setMode} setTime={setTime} setWordCount={setWordCount} reset={reset} />
       <Counter stage={stage} setStage={setStage} time={time} setTime={setTime} wordCount={wordCount} setWordCount={setWordCount} />
-      <TextDisplay stage={stage} input={input} text={text} />
-      <SummaryScreen stage={stage} input={input} text={text} mode={mode} />
+      <TextDisplay stage={stage} input={input} text={text} words={words} />
+      <SummaryScreen stage={stage} input={input} words={words} mode={mode} />
       <Footer stage={stage} />
     </div>
   );

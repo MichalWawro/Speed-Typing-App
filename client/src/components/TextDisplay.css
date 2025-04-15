@@ -48,6 +48,11 @@
 
 /* Skipped letters */
 .display-container span.skipped {
+  text-decoration: underline;
+}
+
+/* Skipped letters */
+.display-container span.next {
   color: gray;
 }
 
