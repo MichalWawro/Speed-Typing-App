@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './TextDisplay.css';
 
 function TextDisplay({ stage, userInput, targetWords }) {
@@ -8,12 +8,33 @@ function TextDisplay({ stage, userInput, targetWords }) {
   const [scrolledLines, setScrolledLines] = useState(0);
   const [lastCursorY, setLastCursorY] = useState(null);
   const [skipFirst, setSkipFirst] = useState(true);
+  const [hideCursor, setHideCursor] = useState(true);
+
+  const cursorRef = useRef(null);
+  const containerRef = useRef(null);
 
   useEffect(() => {
     setDisplay(generateDisplay(userInput, targetWords));
   }, [userInput, targetWords]);
 
   useEffect(() => {
+    setTimeout(() => {
+      setHideCursor(false);
+      const target = document.querySelector('[data-cursor="true"]');
+      const cursor = cursorRef.current;
+      const container = containerRef.current;
+
+      if (target && cursor && container) {
+        const rect = target.getBoundingClientRect();
+        const containerRect = container.getBoundingClientRect();
+
+        const x = rect.left - containerRect.left;
+        const y = rect.top - containerRect.top;
+
+        cursor.style.transform = `translate(${x}px, ${y}px)`;
+      }
+    }, stage === 1 ? 750 : 0);
+
     detectCursorMovement();
   }, [display]);
 
@@ -22,6 +43,7 @@ function TextDisplay({ stage, userInput, targetWords }) {
     setScrolledLines(0);
     setSkipFirst(true);
     setLastCursorY(null);
+    setHideCursor(true);
   }, [stage])
 
   const generateDisplay = (userInput, targetWords) => {
@@ -40,7 +62,7 @@ function TextDisplay({ stage, userInput, targetWords }) {
       const targetChar = targetWord[i] || '';
 
       if (isCurrentWord && i === inputWord.length) {
-        result += `<span class="cursor" id="cursor"></span>`;
+        result += `<span class="target-cursor" id="target-cursor" data-cursor="true"></span>`;
       }
 
       if (inputChar === targetChar) {
@@ -56,17 +78,17 @@ function TextDisplay({ stage, userInput, targetWords }) {
       }
     }
 
-    if (isCurrentWord && inputWord.length === targetWord.length) {
-      result += `<span class="cursor" id="cursor"></span>`;
+    if (isCurrentWord && inputWord.length >= targetWord.length) {
+      result += `<span class="target-cursor" data-cursor="true"></span>`;
     }
 
     return result;
   };
 
   const detectCursorMovement = () => {
-    const cursor = document.getElementById('cursor');
+    const cursor = document.getElementById('target-cursor');
     if (!cursor) return;
-    
+
     const cursorRect = cursor.getBoundingClientRect();
 
     if (lastCursorY !== null && cursorRect.top > lastCursorY) {
@@ -101,10 +123,13 @@ function TextDisplay({ stage, userInput, targetWords }) {
 
   return (
     <div>
-      <div className={`display-container ${stage === 3 ? 'display-container-summary' : ''}`}
+      <div ref={containerRef} className={`display-container ${stage === 3 ? 'display-container-summary' : ''}`}
         style={{
           transition: stage === 2 ? "all 0s" : stage === 3 ? "all 1.25s" : "all 0.75s"
         }}>
+        <div className={`floating-cursor ${stage === 1 ? 'floating-cursor-blinking' : ''}`} ref={cursorRef} style={{
+          display: hideCursor === true ? "none" : ""
+        }}></div>
         <p
           className={`display-text ${stage === 3 ? 'display-text-summary' : ''}`}
           style={{

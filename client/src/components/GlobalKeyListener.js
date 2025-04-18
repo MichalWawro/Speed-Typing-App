@@ -27,7 +27,7 @@ function GlobalKeyListener({ onInput, reset, stage, testSetRemainingTime }) {
       window.removeEventListener("keydown", handleKeyPress);
       setTimeout(() => {
         window.addEventListener("keydown", handleKeyPress);
-      }, 700);
+      }, 500);
     }
 
     return () => window.removeEventListener("keydown", handleKeyPress);

@@ -18,7 +18,6 @@
   font-size: 34px;
   line-height: 1.4;
 
-  /* future me note: font-size * numer of lines * line-height */
   max-height: calc(34px * 4 * 1.4);
   overflow: hidden;
   background-color: none;
@@ -36,36 +35,38 @@
   max-height: calc(30px * 4 * 1.1);
 }
 
-/* Correct letters */
 .display-container span.correct {
   color: white;
 }
 
-/* Incorrect letters */
 .display-container span.incorrect {
   color: rgb(155, 0, 0);
 }
 
-/* Skipped letters */
 .display-container span.skipped {
   text-decoration: underline;
 }
 
-/* Skipped letters */
 .display-container span.upcoming {
   color: gray;
 }
 
-/* Extra letters */
 .display-container span.extra {
   color: rgb(110, 0, 0);
 }
 
-.cursor {
+.floating-cursor {
   position: absolute;
-  width: 3px;
-  height: 1em;
+  top: +4px;
+  left: 0;
+  width: 4px;
+  height: 2.5em;
+  border-radius: 2px;
   background-color: green;
+  transition: transform 0.2s ease;
+}
+
+.floating-cursor-blinking {
   animation: blink 0.8s infinite;
 }
 

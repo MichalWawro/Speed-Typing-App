@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './Stats.css';
 
-function StatsSummary({ stage, input, targetWords, mode, time, wordLimit }) {
+function StatsSummary({ stage, input, targetWords, mode, initialTime, remainingTime, wordLimit }) {
     const [netWPM, setNetWPM] = useState(0);
     const [grossWPM, setGrossWPM] = useState(0);
 
@@ -13,7 +13,7 @@ function StatsSummary({ stage, input, targetWords, mode, time, wordLimit }) {
 
     useEffect(() => {
         if (stage === 3) {
-            calculateStats(input, targetWords, time)
+            calculateStats(input, targetWords, mode === 'time' ? initialTime : remainingTime);
         }
     }, [stage])
 
@@ -21,7 +21,7 @@ function StatsSummary({ stage, input, targetWords, mode, time, wordLimit }) {
         const inputArray = input.split(' ');
         const wordsArray = target.slice(0, inputArray.length);
         setTotalWordsTyped(wordsArray.length);
-        setGrossWPM(60 * inputArray.length / time);
+        setGrossWPM(Math.round(6000 * inputArray.length / time) / 100);
 
         let correctWordsCounter = 0;
         let letterCounter = {
@@ -30,7 +30,6 @@ function StatsSummary({ stage, input, targetWords, mode, time, wordLimit }) {
             missed: 0,
             extra: 0
         };
-
 
         for (let i = 0; i < inputArray.length; i++) {
             let shortWordLength = 0;
@@ -49,7 +48,7 @@ function StatsSummary({ stage, input, targetWords, mode, time, wordLimit }) {
                     if (i != inputArray.length - 1) {
                         letterCounter.missed += (Math.abs(inputArray[i].length - wordsArray[i].length));
                     } else {
-                        setGrossWPM(60 * (inputArray.length - 1) / time);
+                        setGrossWPM(Math.round(6000 * (inputArray.length - 1) / time) / 100);
                         setTotalWordsTyped(wordsArray.length - 1);
                     }
                 } else {
@@ -67,11 +66,7 @@ function StatsSummary({ stage, input, targetWords, mode, time, wordLimit }) {
             }
         }
 
-        // console.log('Words: ' + correctWordsCounter + '\n' +
-        //     "Letters: ", 'Correct: ' + letterCounter.correct,
-        //     'Incorrect: ' + letterCounter.incorrect, 'Missed :' + letterCounter.missed, 'Extra: ' + letterCounter.extra);
-
-        setNetWPM(60 * correctWordsCounter / time);
+        setNetWPM(Math.round(6000 * correctWordsCounter / time) / 100);
         setCorrectWords(correctWordsCounter);
         setAccuracy(Math.round(letterCounter.correct / (letterCounter.correct + letterCounter.incorrect + letterCounter.missed + letterCounter.extra) * 10000) / 100);
         setLetters({ correct: letterCounter.correct, incorrect: letterCounter.incorrect, missed: letterCounter.missed, extra: letterCounter.extra });

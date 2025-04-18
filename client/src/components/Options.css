@@ -1,4 +1,3 @@
-/* Main container */
 .options-container {
     display: flex;
     position: relative;
@@ -8,7 +7,6 @@
     justify-content: center;
 
     background-color: #333333;
-
     transition: 1s;
 }
 
@@ -17,8 +15,8 @@
     pointer-events: none;
 }
 
-/* Boxes */
-.options-box, .reset-box {
+.options-box,
+.reset-box {
     padding: 5px 5px;
     margin-inline: 5px;
     border-radius: 10px;
@@ -26,10 +24,8 @@
     background-color: #212121;
 }
 
-/* Buttons */
 .mode-button,
-.option-button,
-.reset-button {
+.option-button {
     padding: 5px;
     padding-inline: 10px;
     margin-inline: 2px;
@@ -44,10 +40,8 @@
     transition: 0.3s;
 }
 
-/* On Hover */
 .mode-button:hover,
-.option-button:hover,
-.reset-button:hover {
+.option-button:hover {
     color: white;
     background-color: #333333;
 }

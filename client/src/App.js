@@ -13,14 +13,31 @@ function App() {
   const [targetWords, setTargetWords] = useState(['bread', 'monkey', 'table', 'tree', 'family']);
   const [stage, setStage] = useState(1);
   const [mode, setMode] = useState('time')
-  
-  const [wordLimit, setWordLimit] = useState(120);
+
+  const [wordLimit, setWordLimit] = useState(60);
   const [initialTime, setInitialTime] = useState(30);
   const [remainingTime, setRemainingTime] = useState(30);
 
   useEffect(() => {
+    if (stage === 1) {
+      fetchWordsArray();
+    }
+  }, [stage])
+
+  useEffect(() => {
     fetchWordsArray();
-  }, [])
+    if (mode === 'time') {
+      setRemainingTime(initialTime);
+    } else {
+      setRemainingTime(0);
+    }
+  }, [mode]);
+
+  useEffect(() => {
+    if (mode === 'wordLimit' && input.split(' ').length === wordLimit && input.split(' ')[wordLimit - 1] === targetWords[wordLimit - 1]) {
+      setStage(3);
+    }
+  }, [input]);
 
   const fetchWordsArray = () => {
     fetch('http://localhost:8080/api/get-random-array')
@@ -47,7 +64,11 @@ function App() {
 
   const reset = () => {
     setInput('');
-    setRemainingTime(initialTime);
+    if (mode === 'time') {
+      setRemainingTime(initialTime);
+    } else {
+      setRemainingTime(0);
+    }
     setStage(1);
   };
 
@@ -56,9 +77,9 @@ function App() {
       <GlobalKeyListener onInput={handleKeyInput} stage={stage} reset={reset} testSetRemainingTime={setRemainingTime} />
 
       <Options stage={stage} mode={mode} setMode={setMode} setRemainingTime={setRemainingTime} setInitialTime={setInitialTime} setWordLimit={setWordLimit} reset={reset} />
-      <Counter stage={stage} setStage={setStage} remainingTime={remainingTime} setRemainingTime={setRemainingTime} wordLimit={wordLimit} setWordLimit={setWordLimit} />
+      <Counter stage={stage} setStage={setStage} remainingTime={remainingTime} setRemainingTime={setRemainingTime} wordLimit={wordLimit} setWordLimit={setWordLimit} mode={mode} />
       <TextDisplay stage={stage} userInput={input} targetWords={targetWords} />
-      <Stats stage={stage} input={input} targetWords={targetWords} mode={mode} time={initialTime} wordLimit={wordLimit} />
+      <Stats stage={stage} input={input} targetWords={targetWords} mode={mode} remainingTime={remainingTime} initialTime={initialTime} wordLimit={wordLimit} />
       <Footer stage={stage} />
     </div>
   );
