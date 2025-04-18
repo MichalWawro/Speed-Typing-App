@@ -1,36 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import './TextDisplay.css';
 
-function TextDisplay({ stage, input, words }) { //-text
+function TextDisplay({ stage, userInput, targetWords }) {
   const [display, setDisplay] = useState('');
 
-  const [topPosition, setTopPosition] = useState(0);
-  const [lineOffset, setLineOffset] = useState(0);
+  const [verticalOffset, setVerticalOffset] = useState(0);
+  const [scrolledLines, setScrolledLines] = useState(0);
   const [lastCursorY, setLastCursorY] = useState(null);
   const [skipFirst, setSkipFirst] = useState(true);
 
   useEffect(() => {
-    setDisplay(compareStrings(input, words)); //-text
-  }, [input, words]); //-text
+    setDisplay(generateDisplay(userInput, targetWords));
+  }, [userInput, targetWords]);
 
   useEffect(() => {
     detectCursorMovement();
   }, [display]);
 
-  //Reseting the variables
   useEffect(() => {
-    setTopPosition(0);
-    setLineOffset(0);
+    setVerticalOffset(0);
+    setScrolledLines(0);
     setSkipFirst(true);
     setLastCursorY(null);
   }, [stage])
 
-  const compareStrings = (input, words) => { //-text
-    const inputWords = input.split(' ');
-    //const textWordss = text.split(' ');
-    const textWords = words;
+  const generateDisplay = (userInput, targetWords) => {
+    const inputWords = userInput.split(' ');
 
-    return textWords
+    return targetWords
       .map((word, index) => compareWords(inputWords[index] || '', word, index === inputWords.length - 1, index >= inputWords.length - 1))
       .join(' ');
   };
@@ -46,15 +43,15 @@ function TextDisplay({ stage, input, words }) { //-text
         result += `<span class="cursor" id="cursor"></span>`;
       }
 
-      if (inputChar === targetChar) { // Correct
+      if (inputChar === targetChar) {
         result += `<span class="correct">${targetChar}</span>`;
-      } else if (!inputChar && targetChar && !isNext) { // Skipped
+      } else if (!inputChar && targetChar && !isNext) {
         result += `<span class="skipped">${targetChar}</span>`;
-      } else if (!inputChar && targetChar) { // Next
-        result += `<span class="next">${targetChar}</span>`;
-      } else if (inputChar && !targetChar) { // Extra letters
+      } else if (!inputChar && targetChar) {
+        result += `<span class="upcoming">${targetChar}</span>`;
+      } else if (inputChar && !targetChar) {
         result += `<span class="extra">${inputChar}</span>`;
-      } else { // Incorrect
+      } else {
         result += `<span class="incorrect">${targetChar}</span>`;
       }
     }
@@ -69,23 +66,21 @@ function TextDisplay({ stage, input, words }) { //-text
   const detectCursorMovement = () => {
     const cursor = document.getElementById('cursor');
     if (!cursor) return;
-
+    
     const cursorRect = cursor.getBoundingClientRect();
-
-    console.log(cursorRect.top, lastCursorY, "||", lineOffset, skipFirst);
 
     if (lastCursorY !== null && cursorRect.top > lastCursorY) {
       if (!skipFirst) {
-        setTopPosition(prev => prev - 47.6);
-        setLineOffset(prev => prev + 1);
+        setVerticalOffset(prev => prev - 47.6);
+        setScrolledLines(prev => prev + 1);
       } else {
         setSkipFirst(false);
         setLastCursorY(cursorRect.top);
       }
     } else if (lastCursorY !== null && cursorRect.top < lastCursorY) {
-      if (lineOffset > 0) {
-        setTopPosition(prev => prev + 47.6);
-        setLineOffset(prev => prev - 1);
+      if (scrolledLines > 0) {
+        setVerticalOffset(prev => prev + 47.6);
+        setScrolledLines(prev => prev - 1);
       } else {
         setSkipFirst(true);
         setLastCursorY(cursorRect.top);
@@ -101,7 +96,7 @@ function TextDisplay({ stage, input, words }) { //-text
     }
     const lineHeight = 34 * 1.4;
     const visibleLines = 4;
-    return `calc(${lineHeight * (visibleLines + lineOffset)}px)`;
+    return `calc(${lineHeight * (visibleLines + scrolledLines)}px)`;
   };
 
   return (
@@ -113,9 +108,8 @@ function TextDisplay({ stage, input, words }) { //-text
         <p
           className={`display-text ${stage === 3 ? 'display-text-summary' : ''}`}
           style={{
-            //Display-text properties depending on stage
-            top: `${topPosition}px`,
-            clipPath: `inset(${lineOffset * 34 * 1.4}px 0 0 0)`,
+            top: `${verticalOffset}px`,
+            clipPath: `inset(${scrolledLines * 34 * 1.4}px 0 0 0)`,
             maxHeight: calculateMaxHeight(),
             transition: stage === 2 ? "all 0s" : stage === 3 ? "all 1.25s" : "all 0.75s"
           }}

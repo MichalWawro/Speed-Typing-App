@@ -1,24 +1,25 @@
-.summary-container {
+.stats-container {
     display: flex;
     position: relative;
     left: 0vw;
     width: 100vw;
-    padding-top: 50px;
+    top: -60px;
     justify-content: center;
 
     opacity: 100%;
     transition: all 1s;
 }
 
-.summary-container-hidden {
+.stats-container-hidden {
     opacity: 0%;
     left: -50vw;
 }
 
-.summary-stats {
+.stats {
     font-family: "Roboto Mono", monospace;
-    font-size: 60px;
+    font-size: 42px;
 
     padding-inline: 20px;
     color: #7c7c7c;
 }
+
