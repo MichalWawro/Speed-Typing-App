@@ -1,11 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="01bf4c4a-9c76-4a41-a0cd-36afc95106bb" name="Changes" comment="" />
+    <list default="true" id="01bf4c4a-9c76-4a41-a0cd-36afc95106bb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/typingtestgame/repository/WordRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/Counter.css" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/Counter.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/Counter.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/Counter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/GlobalKeyListener.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/GlobalKeyListener.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/Options.css" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/Options.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/Options.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/Options.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/Stats.css" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/Stats.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/Stats.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/Stats.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/TextDisplay.css" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/TextDisplay.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/TextDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/TextDisplay.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/typingtestgame/TypingTestGameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/typingtestgame/TypingTestGameApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/typingtestgame/controller/RandomTextController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/typingtestgame/controller/RandomTextController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/typingtestgame/service/RandomTextService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/typingtestgame/service/RandomTextService.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="AnnotationType" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -20,14 +50,33 @@
     <option name="showModules" value="false" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Michał Wawro/Desktop/Projects/Typing Test Game/typing-test-game/server&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;ae0db14d86d8874d835991bb82f281fc&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.example.typingtestgame.controller" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.example.typingtestgame" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="TypingTestGameApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="typing-test-game" />
@@ -45,7 +94,30 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1741906900571</updated>
+      <workItem from="1742358940555" duration="17000" />
+      <workItem from="1742358977038" duration="10000" />
+      <workItem from="1742359018704" duration="470000" />
+      <workItem from="1742359633923" duration="2026000" />
+      <workItem from="1742405255332" duration="741000" />
+      <workItem from="1742414715965" duration="3118000" />
+      <workItem from="1742475586565" duration="2274000" />
+      <workItem from="1742576719928" duration="1845000" />
+      <workItem from="1742761888177" duration="1208000" />
+      <workItem from="1743018628974" duration="636000" />
+      <workItem from="1743082773054" duration="3305000" />
+      <workItem from="1743441222164" duration="1812000" />
+      <workItem from="1743638375710" duration="1374000" />
+      <workItem from="1743693763901" duration="2410000" />
+      <workItem from="1743804520481" duration="1211000" />
+      <workItem from="1744589743361" duration="832000" />
+      <workItem from="1744654899803" duration="1967000" />
+      <workItem from="1744739973099" duration="1898000" />
+      <workItem from="1744923684766" duration="1846000" />
+      <workItem from="1744986726306" duration="4085000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>
