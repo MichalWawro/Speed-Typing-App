@@ -20,12 +20,11 @@ function App() {
 
   useEffect(() => {
     if (stage === 1) {
-      fetchWordsArray();
+      mode === 'time' ? fetchWordsArray(null, true) : fetchWordsArray(wordLimit, true);
     }
-  }, [stage])
+  }, [mode, stage, wordLimit, initialTime])
 
   useEffect(() => {
-    fetchWordsArray();
     if (mode === 'time') {
       setRemainingTime(initialTime);
     } else {
@@ -39,10 +38,16 @@ function App() {
     }
   }, [input]);
 
-  const fetchWordsArray = () => {
-    fetch('http://localhost:8080/api/get-random-array')
+  const fetchWordsArray = (wordLimit, clearPrevData) => {
+    fetch(`http://localhost:8080/api/get-random-array${wordLimit === null ? "" : `?count=${wordLimit}`}`)
       .then(response => response.json())
-      .then(data => setTargetWords(data))
+      .then(data => {
+        if (clearPrevData) {
+          setTargetWords(data);
+        } else {
+          setTargetWords(prev => [...prev, ...data]);
+        }
+      })
       .catch(error => console.error("Error fetching data: ", error));
   }
 
@@ -78,7 +83,7 @@ function App() {
 
       <Options stage={stage} mode={mode} setMode={setMode} setRemainingTime={setRemainingTime} setInitialTime={setInitialTime} setWordLimit={setWordLimit} reset={reset} />
       <Counter stage={stage} setStage={setStage} remainingTime={remainingTime} setRemainingTime={setRemainingTime} wordLimit={wordLimit} setWordLimit={setWordLimit} mode={mode} />
-      <TextDisplay stage={stage} userInput={input} targetWords={targetWords} />
+      <TextDisplay stage={stage} userInput={input} targetWords={targetWords} mode={mode} fetchRandomWords={fetchWordsArray} />
       <Stats stage={stage} input={input} targetWords={targetWords} mode={mode} remainingTime={remainingTime} initialTime={initialTime} wordLimit={wordLimit} />
       <Footer stage={stage} />
     </div>

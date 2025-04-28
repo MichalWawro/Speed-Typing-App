@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './TextDisplay.css';
 
-function TextDisplay({ stage, userInput, targetWords }) {
+function TextDisplay({ stage, userInput, targetWords, mode, fetchRandomWords }) {
   const [display, setDisplay] = useState('');
 
   const [verticalOffset, setVerticalOffset] = useState(0);
@@ -9,17 +9,24 @@ function TextDisplay({ stage, userInput, targetWords }) {
   const [lastCursorY, setLastCursorY] = useState(null);
   const [skipFirst, setSkipFirst] = useState(true);
   const [hideCursor, setHideCursor] = useState(true);
+  const [timesFetched, setTimesFetched] = useState(0);
 
   const cursorRef = useRef(null);
   const containerRef = useRef(null);
 
   useEffect(() => {
     setDisplay(generateDisplay(userInput, targetWords));
+    if (userInput.split(' ').length > (100 + 50 * timesFetched) && mode === 'time') {
+      setTimesFetched((prev) => prev++);
+      fetchRandomWords(50, false);
+    }
   }, [userInput, targetWords]);
 
   useEffect(() => {
     setTimeout(() => {
-      setHideCursor(false);
+      if (stage != 3) {
+        setHideCursor(false);
+      }
       const target = document.querySelector('[data-cursor="true"]');
       const cursor = cursorRef.current;
       const container = containerRef.current;
@@ -35,7 +42,9 @@ function TextDisplay({ stage, userInput, targetWords }) {
       }
     }, stage === 1 ? 750 : 0);
 
-    detectCursorMovement();
+    if (stage != 1) {
+      detectCursorMovement();
+    }
   }, [display]);
 
   useEffect(() => {
@@ -44,6 +53,7 @@ function TextDisplay({ stage, userInput, targetWords }) {
     setSkipFirst(true);
     setLastCursorY(null);
     setHideCursor(true);
+    setTimesFetched(0);
   }, [stage])
 
   const generateDisplay = (userInput, targetWords) => {

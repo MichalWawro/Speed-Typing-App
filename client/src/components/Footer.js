@@ -18,8 +18,6 @@ function Footer({ stage }) {
             <div className="footer-info">
                 <a href="https://github.com/MichalWawro/Typing-Test-Game" target="_blank" rel="noopener noreferrer">GitHub</a>
                 <a href="https://www.linkedin.com/in/michalwawro/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a>Email</a>
-                <a>Link</a>
             </div>
         </div>
     )

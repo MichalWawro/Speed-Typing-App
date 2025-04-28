@@ -21,7 +21,7 @@ function StatsSummary({ stage, input, targetWords, mode, initialTime, remainingT
         const inputArray = input.split(' ');
         const wordsArray = target.slice(0, inputArray.length);
         setTotalWordsTyped(wordsArray.length);
-        setGrossWPM(Math.round(6000 * inputArray.length / time) / 100);
+        setGrossWPM(Math.round(600 * inputArray.length / time) / 10);
 
         let correctWordsCounter = 0;
         let letterCounter = {
@@ -48,13 +48,12 @@ function StatsSummary({ stage, input, targetWords, mode, initialTime, remainingT
                     if (i != inputArray.length - 1) {
                         letterCounter.missed += (Math.abs(inputArray[i].length - wordsArray[i].length));
                     } else {
-                        setGrossWPM(Math.round(6000 * (inputArray.length - 1) / time) / 100);
+                        setGrossWPM(Math.round(600 * (inputArray.length - 1) / time) / 10);
                         setTotalWordsTyped(wordsArray.length - 1);
                     }
                 } else {
                     shortWordLength = inputArray[i].length;
                 }
-
                 //Correct/Incorrect
                 for (let j = 0; j < shortWordLength; j++) {
                     if (inputArray[i][j] === wordsArray[i][j]) {
@@ -66,7 +65,7 @@ function StatsSummary({ stage, input, targetWords, mode, initialTime, remainingT
             }
         }
 
-        setNetWPM(Math.round(6000 * correctWordsCounter / time) / 100);
+        setNetWPM(Math.round(600 * correctWordsCounter / time) / 10);
         setCorrectWords(correctWordsCounter);
         setAccuracy(Math.round(letterCounter.correct / (letterCounter.correct + letterCounter.incorrect + letterCounter.missed + letterCounter.extra) * 10000) / 100);
         setLetters({ correct: letterCounter.correct, incorrect: letterCounter.incorrect, missed: letterCounter.missed, extra: letterCounter.extra });
@@ -75,10 +74,37 @@ function StatsSummary({ stage, input, targetWords, mode, initialTime, remainingT
     return (
         <div className={`stats-container ${stage !== 3 ? 'stats-container-hidden' : ''}`}>
             <div className="stats">
-                <div className="words-per-minute">wpm:{netWPM}/{grossWPM}</div>
-                <div className="words-correct">correct words: {correctWords}/{totalWordsTyped}</div>
-                <div className="accuracy">accuracy: {accuracy}%</div>
-                <div className="letters-all">letters: {letters.correct}/{letters.incorrect}/{letters.extra}/{letters.missed}</div>
+                <div className="stats-item">
+                    wpm:
+                    <span className="stats-value">
+                        {netWPM}/{grossWPM}
+                        <span className="tooltip">correct / all</span>
+                    </span>
+                </div>
+                <div className="stats-item">
+                    correct words:
+                    <span className="stats-value">
+                        {correctWords}/{totalWordsTyped}
+                        <span className="tooltip">correct / all</span>
+                    </span>
+                </div>
+                <div className="stats-item">
+                    accuracy:
+                    <span className="stats-value">
+                        {accuracy}%
+                        <span className="tooltip">percentage of correct letters</span>
+                    </span>
+                </div>
+                <div className="stats-item">
+                    letters:
+                    <span className="stats-value">
+                        {letters.correct}/{letters.incorrect}/{letters.extra}/{letters.missed}
+                        <span className="tooltip">correct / incorrect / extra / missed</span>
+                    </span>
+                </div>
+            </div>
+            <div className="test-info">
+                test type: <span className="stats-value">{mode === 'time' ? "time" : "words"}, {mode === 'time' ? initialTime + "s" : wordLimit}</span>
             </div>
         </div>
     )

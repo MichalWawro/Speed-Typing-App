@@ -15,6 +15,11 @@
     pointer-events: none;
 }
 
+.options-container-disabled {
+    top: 0vh;
+    pointer-events: none;
+}
+
 .options-box,
 .reset-box {
     padding: 5px 5px;
