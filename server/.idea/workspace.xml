@@ -4,22 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="01bf4c4a-9c76-4a41-a0cd-36afc95106bb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/typingtestgame/repository/WordRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/Counter.css" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/Counter.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/Counter.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/Counter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/GlobalKeyListener.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/GlobalKeyListener.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/Options.css" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/Options.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/Options.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/Options.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/Stats.css" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/Stats.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/Stats.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/Stats.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/TextDisplay.css" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/TextDisplay.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/TextDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/TextDisplay.js" afterDir="false" />
+    <list default="true" id="01bf4c4a-9c76-4a41-a0cd-36afc95106bb" name="Changes" comment="Added basic randomization">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/typingtestgame/TypingTestGameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/typingtestgame/TypingTestGameApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/typingtestgame/controller/RandomTextController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/typingtestgame/controller/RandomTextController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/typingtestgame/service/RandomTextService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/typingtestgame/service/RandomTextService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,11 +100,31 @@
       <workItem from="1744654899803" duration="1967000" />
       <workItem from="1744739973099" duration="1898000" />
       <workItem from="1744923684766" duration="1846000" />
-      <workItem from="1744986726306" duration="4085000" />
+      <workItem from="1744986726306" duration="4254000" />
+      <workItem from="1745172741740" duration="617000" />
+      <workItem from="1745330412150" duration="2495000" />
+      <workItem from="1745421440667" duration="1087000" />
+      <workItem from="1745528529765" duration="756000" />
+      <workItem from="1745595708364" duration="2466000" />
+      <workItem from="1745780606160" duration="1274000" />
+      <workItem from="1745839245314" duration="4244000" />
     </task>
+    <task id="LOCAL-00001" summary="Added basic randomization">
+      <option name="closed" value="true" />
+      <created>1745017416796</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1745017416796</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added basic randomization" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added basic randomization" />
   </component>
 </project>
