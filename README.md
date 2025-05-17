@@ -2,7 +2,7 @@
 
 **Speed Typing App** is a responsive and dynamic typing test web application built to help you improve and measure your typing speed and accuracy.
 
-## Features
+## Features:
   
  - Two modes: Time mode and Word Count mode
  - Adjustable test settings: set your desired time limit or number of words
